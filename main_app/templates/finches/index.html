@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/finches/finch-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>Finches List</h1>
+</section>
+
+<section class="card-container">
+  {% for finch in finches %}
+    <div class="card">
+      <a href="{% url 'finch-detail' finch.id %}">
+        <div class="card-content">
+          <div class="card-img-container">
+            <img 
+              src="{% static 'images/gold-finch.svg' %}" 
+              alt="A Finch"
+            >
+          </div>
+          <h2 class="card-title">{{ finch.name }}</h2>
+          <h3>Habitat: {{finch.habitat}}</h3>
+          <h3>Food: {{finch.food}}</h3>
+          <h3>Nesting: {{finch.nesting}}</h3>
+          <p><small>Behavior: {{ finch.behavior }}</small></p>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+{% endblock %}
