@@ -4,6 +4,8 @@ from django.views.generic import ListView, DetailView
 from .models import Finch, Toy 
 from .forms import FeedingForm
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 
 class ToyCreate(CreateView):
@@ -27,6 +29,11 @@ class ToyDelete(DeleteView):
 class FinchCreate(CreateView):
   model = Finch
   fields = ['name', 'habitat', 'food', 'nesting', 'behavior', 'description']
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+  
 
 class FinchUpdate(UpdateView):
   model = Finch
@@ -63,3 +70,17 @@ def add_feeding(request, finch_id):
 def assoc_toy(request, finch_id, toy_id):
   Finch.objects.get(id=finch_id).toys.add(toy_id)
   return redirect('finch-detail', finch_id=finch_id)
+
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('finch-index')
+    else:
+      error_message = 'Invalid sign up - try again'
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'signup.html', context)
