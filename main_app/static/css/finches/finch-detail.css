@@ -24,7 +24,7 @@
   margin-top: 20px;
 }
 
-.feedings-home-container {
+.feedings-toy-container {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -94,7 +94,7 @@
   margin: 5px 0;
 }
 
-.feedings-home-container > section {
+.feedings-toy-container > section {
   width: 80%;
   min-width: 360px;
   border: var(--borders);
@@ -201,13 +201,13 @@
     margin-right: 25px;
   }
 
-  .feedings-home-container {
+  .feedings-toy-container {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
   }
 
-  .feedings-home-container > section {
+  .feedings-toy-container > section {
     width: 45%;
   }
 }
