@@ -28,7 +28,7 @@ body {
   min-height: 100vh;
   --nav-bg: rgba(104, 197, 248, .7);
   --nav-bg-ff: rgba(104, 197, 248, .9);
-  --borders: rgb(36, 116, 248) solid 2px;
+  --borders: green solid 2px;
   --text-color: rgb(17, 20, 17);
   --link-hover-color: rgb(16, 56, 158);
   --button-bg: rgb(245, 245, 245);
@@ -44,8 +44,10 @@ body {
   --font-l: 1.8rem;
   --font-reg: 1.6rem;
   --card-border-radius: 6px;
-  background-image: url("https://i.imgur.com/b1JWKEs.jpg");
-  background-size: cover;
+  /* background-image: url("https://i.imgur.com/4fMKp8j.jpg"); */
+  /* background-size: cover; */
+  /* background-color: #b7e4c7; */
+  background-color: #a7c957;
 }
 
 header {

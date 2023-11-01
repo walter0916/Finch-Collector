@@ -24,7 +24,7 @@
   margin-top: 20px;
 }
 
-.feedings-toy-container {
+.feedings-home-container {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -94,7 +94,7 @@
   margin: 5px 0;
 }
 
-.feedings-toy-container > section {
+.feedings-home-container > section {
   width: 80%;
   min-width: 360px;
   border: var(--borders);
@@ -188,7 +188,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .cat-container {
+  .finch-container {
     padding: 35px 30px;
     flex-direction: row;
     align-items: center;
@@ -201,13 +201,13 @@
     margin-right: 25px;
   }
 
-  .feedings-toy-container {
+  .feedings-home-container {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
   }
 
-  .feedings-toy-container > section {
+  .feedings-home-container > section {
     width: 45%;
   }
 }
