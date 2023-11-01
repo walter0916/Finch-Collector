@@ -3,9 +3,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Finch, Toy 
 from .forms import FeedingForm
+from django.contrib.auth.views import LoginView
 
-# Add the following import
-from django.http import HttpResponse
 
 class ToyCreate(CreateView):
   model = Toy
@@ -37,8 +36,8 @@ class FinchDelete(DeleteView):
   model = Finch
   success_url = '/finches/'  
 
-def home(request):
-  return render(request, 'home.html')
+class Home(LoginView):
+  template_name = 'home.html'
 
 def about(request):
   return render(request, 'about.html')
