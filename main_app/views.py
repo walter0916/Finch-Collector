@@ -6,9 +6,11 @@ from .forms import FeedingForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class ToyCreate(CreateView):
+class ToyCreate(LoginRequiredMixin, CreateView):
   model = Toy
   fields = '__all__'
 
@@ -26,7 +28,7 @@ class ToyDelete(DeleteView):
   model = Toy
   success_url = '/toys/'
 
-class FinchCreate(CreateView):
+class FinchCreate(LoginRequiredMixin, CreateView):
   model = Finch
   fields = ['name', 'habitat', 'food', 'nesting', 'behavior', 'description']
 
@@ -49,8 +51,9 @@ class Home(LoginView):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def finch_index(request):
-  finches = Finch.objects.all()
+  finches = Finch.objects.filter(user=request.user)
   return render(request, 'finches/index.html', { 'finches': finches })
 
 def finch_detail(request, finch_id):
